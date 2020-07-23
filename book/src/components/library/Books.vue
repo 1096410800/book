@@ -88,7 +88,7 @@ export default {
     },
     editBook(item) {
       this.$refs.edit.dialogFormVisible = true;
-      this.$$refs.edit.form = {
+      this.$refs.edit.form = {
         id: item.id,
         cover: item.cover,
         title: item.title,
@@ -96,11 +96,19 @@ export default {
         date: item.date,
         press: item.press,
         abs: item.abs,
-        category: {
-          id: item.category.id.toString(),
-          name: item.category.name
-        }
+        cid: item.cid
       };
+    },
+    deleteBook(id){
+      this.$confirm("删除后不可恢复",{
+        confirmButtonText:'取消',
+        confirmButtonText:'确定',
+        type:'warning'
+      }).then(()=>{this.$axios.post('library/book/remove',{id:id}).then(resp=>{
+        if(resp && resp.data.status === 0){
+          this.loadBooks()
+        }
+      })})
     }
   }
 };

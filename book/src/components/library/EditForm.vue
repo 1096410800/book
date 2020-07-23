@@ -22,7 +22,7 @@
           <el-input v-model="form.abs" type="textarea"></el-input>
         </el-form-item>
         <el-form-item label="分类" :label-width="formLabelWidth" prop="title">
-          <el-select v-model="form.category.id">
+          <el-select v-model="form.cid">
             <el-option label="文学" value="1"></el-option>
             <el-option label="流行" value="2"></el-option>
             <el-option label="文化" value="3"></el-option>
@@ -59,10 +59,7 @@ export default {
         press: "",
         cover: "",
         abs: "",
-        category: {
-          id: "",
-          name: ""
-        }
+        cid:""
       }
     };
   },
@@ -77,7 +74,7 @@ export default {
           date: this.form.date,
           press: this.form.press,
           abs: this.form.abs,
-          cid: this.form.category.id
+          cid: this.form.cid
         })
         .then(resp => {
           if (resp && resp.data.status === 0) {
