@@ -21,7 +21,7 @@
           bodyStyle="padding:10px"
           shadow="hover"
         >
-          <div class="cover" @click='editBook(item)'>
+          <div class="cover" @click="editBook(item)">
             <img :src="item.cover" alt="封面" />
           </div>
           <div class="info">
@@ -33,8 +33,7 @@
           <div class="author">{{item.author}}</div>
         </el-card>
       </el-tooltip>
-    <edit-form @onSubmit='loadBooks()' ref="edit"></edit-form>
-  
+      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
     </el-row>
     <el-row>
       <el-pagination
@@ -87,8 +86,21 @@ export default {
           }
         });
     },
-    editBook(item){
-      this.$refs.edit.dialogFormVisible=true
+    editBook(item) {
+      this.$refs.edit.dialogFormVisible = true;
+      this.$$refs.edit.form = {
+        id: item.id,
+        cover: item.cover,
+        title: item.title,
+        author: item.author,
+        date: item.date,
+        press: item.press,
+        abs: item.abs,
+        category: {
+          id: item.category.id.toString(),
+          name: item.category.name
+        }
+      };
     }
   }
 };
@@ -131,9 +143,9 @@ a {
   text-decoration: none;
 }
 .el-icon-delete {
-    cursor: pointer;
-    float: right;
-  }
+  cursor: pointer;
+  float: right;
+}
 
 a:link,
 a:visited,
