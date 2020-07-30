@@ -17,6 +17,7 @@
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover"></el-input>
+          <upload @onUpload="upload" ref="file"></upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input v-model="form.abs" type="textarea"></el-input>
@@ -45,8 +46,10 @@
 
 
 <script>
+import Upload from '@/components/common/Upload'
 export default {
   name: "EditForm",
+  components:{Upload},
   data() {
     return {
       dialogFormVisible: false,
@@ -82,6 +85,10 @@ export default {
            this.$emit('onSubmit')
           }
         });
+    },
+    upload(){
+      this.form.cover=this.$refs.file.url
+            alert(this.$refs.file.url)
     }
   }
 };

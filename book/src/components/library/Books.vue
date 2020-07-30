@@ -83,6 +83,7 @@ export default {
         .then(resp => {
           if (resp && resp.data.status === 0) {
             _this.books = resp.data.message;
+            this.currentPage=1
           }
         });
     },
