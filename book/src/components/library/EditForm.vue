@@ -16,7 +16,7 @@
           <el-input v-model="form.press"></el-input>
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
-          <el-input v-model="form.cover"></el-input>
+          <el-input  type="hidden" v-model="form.cover" ></el-input>
           <upload @onUpload="upload" ref="file"></upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
@@ -86,9 +86,8 @@ export default {
           }
         });
     },
-    upload(){
-      this.form.cover=this.$refs.file.url
-            alert(this.$refs.file.url)
+    upload(url){
+      this.form.cover=url
     }
   }
 };

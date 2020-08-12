@@ -23,6 +23,7 @@ export default {
       this.$axios.post(url, { categoryId: cid }).then((resp) => {
         if (resp && resp.data.status === 0) {
           this.$refs.booksArea.books = resp.data.message;
+          this.$refs.booksArea.currentPage=1
         }
       });
     },

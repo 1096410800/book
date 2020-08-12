@@ -4,6 +4,7 @@ import AppIndex from '@/components/AppIndex'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import LibraryIndex from '@/components/library/LibraryIndex'
+import Register from '@/components/Register'
 
 Vue.use(Router)
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/home',
